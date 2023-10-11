@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const PokemonCard = (props) => {
   
 const {pokemon} = props

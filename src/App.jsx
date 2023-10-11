@@ -18,7 +18,6 @@ const selectedPokemon = pokemonList[0];
   return (
     <div>
       <PokemonCard pokemon={selectedPokemon} />
-    </div>
   )
   };
 
