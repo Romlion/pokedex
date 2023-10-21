@@ -1,8 +1,10 @@
+
 import "./App.css"
 import PokemonCard from "./components/PokemonCard"
 import {useState} from "react";
 import NavBar from "./components/NavBar";
 import React from "react";
+
 
 
 function App() {
