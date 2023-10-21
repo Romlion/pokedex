@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
+
 const PokemonCard = ({pokemon}) => {
   return(
     <div className='pokemon-card'>
