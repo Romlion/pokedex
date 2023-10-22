@@ -1,24 +1,65 @@
-import './App.css'
-import PokemonCard from './components/PokemonCard'
+import "./App.css"
+import PokemonCard from "./components/PokemonCard"
+import {useState} from "react";
+import NavBar from "./components/NavBar";
+import { func } from "prop-types";
+
+
 
 function App() {
-const pokemonList = [
-  {
-    name: "bulbasaur",
-    imgSrc:
-    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-  },
-  {
-    name: "mew",
-  },
-];
+  const [currentPokemon, setCurrentPokemon] = useState(null);
 
-const selectedPokemon = pokemonList[0];
+  const pokemonList = [
+    {
+      id: 1,
+      name: "bulbasaur",
+      Image:
+     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+    },
+    {
+      id: 2,
+      name: "charmander",
+      Image:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+    },
+    {
+      id: 3,
+      name: "squirtle",
+      Image:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+    },
+    {
+      id: 4,
+      name: "pikachu",
+      Image:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+    },
+    {
+      id: 5,
+      name: "mew",
+    },
+  ];
 
-  return (
-    <div>
-      <PokemonCard pokemon={selectedPokemon} />
-  )
+  const handlePokemonClick = (pokemon) => {
+    setCurrentPokemon(pokemon);
   };
 
-export default App
+  return (
+    <div className="app">
+      <NavBar pokemonList={pokemonList} onPokemonClick={handlePokemonClick} />
+      <div className="pokemon-details">
+        {currentPokemon ? (
+          <div>
+            <h2>{currentPokemon.name}</h2>
+            <img src={currentPokemon.Image} alt={currentPokemon.name} />
+          </div>
+        ) : (
+          <p>Sélectionnez un Pokémon</p>
+        )}
+      </div>
+    </div>
+  );
+}
+
+
+export default App;

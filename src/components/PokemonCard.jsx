@@ -5,7 +5,6 @@ const PokemonCard = (props) => {
   
 const {pokemon} = props
 
-  console.log(props);
   
   return (
     <div>
@@ -17,6 +16,6 @@ const {pokemon} = props
             {pokemon.name}
     </div>
   );
-};
+}
 
 export default PokemonCard;
