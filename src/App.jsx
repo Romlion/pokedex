@@ -1,65 +1,60 @@
-
 import "./App.css"
-import PokemonCard from "./components/PokemonCard"
 import {useState} from "react";
 import NavBar from "./components/NavBar";
-import React from "react";
-
-
 
 function App() {
-  const [pokemonIndex, setPokemonIndex] = useState(0);
+  const [currentPokemon, setCurrentPokemon] = useState(null);
 
-  const handlePrevious = () => {
-    if(pokemonIndex > 0) {
-      setPokemonIndex(pokemonIndex - 1);
-    
-    };
-  };
+  const pokemonList = [
+    {
+      id: 1,
+      name: "bulbasaur",
+      Image:
+     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+    },
+    {
+      id: 2,
+      name: "charmander",
+      Image:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+    },
+    {
+      id: 3,
+      name: "squirtle",
+      Image:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+    },
+    {
+      id: 4,
+      name: "pikachu",
+      Image:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+    },
+    {
+      id: 5,
+      name: "mew",
+    },
+  ];
 
-  const handleNext = () => {
-    if(pokemonIndex < 10) {
-      setPokemonIndex(pokemonIndex + 1);
-    }
+  const handlePokemonClick = (pokemon) => {
+    setCurrentPokemon(pokemon);
   };
 
   return (
-    <section className="App">
-      <PokemonCard pokemon ={pokemonList[pokemonIndex]}/>
-      <NavBar handlePrevious={handlePrevious} handleNext={handleNext} />
-    </section>
-    );
-  }
-
-const pokemonList = [
-  {
-    name: "bulbasaur",
-    imgSrc:
-   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-  },
-  {
-    name: "charmander",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
-  },
-  {
-    name: "squirtle",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
-  },
-  {
-    name: "pikachu",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
-  },
-  {
-    name: "mew",
-  },
-];
-
-const selectedPokemon = pokemonList[0];
-<>
-<PokemonCard pokemon = {selectedPokemon}/>
-</>
+    <div className="app">
+      <NavBar pokemonList={pokemonList} onPokemonClick={handlePokemonClick} />
+      <div className="pokemon-details">
+        {currentPokemon ? (
+          <div>
+            <h2>{currentPokemon.name}</h2>
+            <img src={currentPokemon.Image} alt={currentPokemon.name} />
+          </div>
+        ) : (
+          <p>Sélectionnez un Pokémon</p>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default App;

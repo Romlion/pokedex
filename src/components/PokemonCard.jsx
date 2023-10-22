@@ -1,19 +1,21 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
+const PokemonCard = (props) => {
+  
+const {pokemon} = props
 
-const PokemonCard = ({pokemon}) => {
-  return(
-    <div className='pokemon-card'>
-      <h2>{pokemon.name}</h2>
-      {pokemon.imgSrc ? (
-      <img src={pokemon.imgSrc} alt={pokemon.name} />
-       ) : (
-        <p>???</p>
-      )}
+  return (
+    <div>
+        {pokemon.imgSrc !== undefined ? (
+          <img src={pokemon.imgSrc} alt={pokemon.name}/>
+          ) : (
+            <p>???</p>
+            )}
+            {pokemon.name}
     </div>
   );
-};
+}
 
 PokemonCard.propTypes = {
  pokemon: PropTypes.shape({
