@@ -13,6 +13,7 @@ function NavBar({ pokemonList, onPokemonClick}) {
         </button>
       ))}
     </div>
+
   );
 }
 

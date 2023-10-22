@@ -1,10 +1,6 @@
 import "./App.css"
-import PokemonCard from "./components/PokemonCard"
 import {useState} from "react";
 import NavBar from "./components/NavBar";
-import { func } from "prop-types";
-
-
 
 function App() {
   const [currentPokemon, setCurrentPokemon] = useState(null);
@@ -60,6 +56,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
